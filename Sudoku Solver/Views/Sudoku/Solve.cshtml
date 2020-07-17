@@ -1,0 +1,22 @@
+﻿@model Sudoku_Solver.Models.SudokuModel
+@{
+    ViewBag.Title = "Solve";
+}
+
+@using (Html.BeginForm())
+{
+    <center>
+        <h2>The Solved Solution</h2>
+
+        @for (int i = 0; i < 9; i++)
+        {
+            <div class="row">
+                @{int row = i * 9;}
+                @for (int j = row; j < row + 9; j++)
+                {
+                    @Html.EditorFor(Model => Model.board[j], new { htmlAttributes = new { @class = "form-controll", style = "width: 40px" } })
+                }
+            </div>
+        }
+    </center>
+}

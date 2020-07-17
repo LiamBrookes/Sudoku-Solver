@@ -1,0 +1,28 @@
+﻿@model Sudoku_Solver.Models.SudokuModel
+
+@{
+    ViewBag.Title = "Generate";
+}
+
+@using (Html.BeginForm())
+{
+    <center>
+        <h2>Generated Sudoku</h2>
+
+        @for (int i = 0; i < 9; i++)
+        {
+            <div class="row">
+                @{int row = i * 9;}
+                @for (int j = row; j < row + 9; j++)
+                {
+                    @Html.EditorFor(Model => Model.board[j], new { htmlAttributes = new { @class = "form-controll", style = "width: 40px" } })
+                    @Html.ValidationMessageFor(Model => Model.board[j], "", new { @class = "text-danger" })
+                }
+            </div>
+        }
+
+        <div class="row">
+            <input type="submit" value="Solve" class="btn btn-default">
+        </div>
+    </center>
+}
